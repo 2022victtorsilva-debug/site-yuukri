@@ -1,0 +1,2033 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07090d">
+  <meta name="color-scheme" content="dark">
+
+  <meta
+    name="description"
+    content="A Yuukri cria sites e sistemas personalizados para empresas que querem uma presença profissional na internet."
+  >
+
+  <meta property="og:title" content="Yuukri | Sites e Sistemas">
+  <meta
+    property="og:description"
+    content="Sites e sistemas personalizados para empresas."
+  >
+  <meta property="og:type" content="website">
+
+  <title>Yuukri | Sites e Sistemas</title>
+
+  <style>
+    :root {
+      --bg: #06080c;
+      --bg-deep: #040609;
+      --surface: rgba(13, 18, 27, 0.72);
+      --surface-solid: #0d121b;
+      --surface-2: rgba(17, 24, 36, 0.82);
+      --surface-hover: rgba(20, 29, 44, 0.9);
+      --text: #f5f7fb;
+      --muted: #9aa6b8;
+      --muted-strong: #b7c0cf;
+      --line: rgba(255, 255, 255, 0.095);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --blue: #3b82f6;
+      --blue-2: #2563eb;
+      --blue-soft: rgba(59, 130, 246, 0.13);
+      --blue-line: rgba(96, 165, 250, 0.38);
+      --blue-glow: rgba(37, 99, 235, 0.16);
+      --max: 1180px;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.24);
+      --shadow-blue: 0 22px 70px rgba(17, 67, 156, 0.13);
+      --ease-premium: cubic-bezier(0.22, 0.8, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(37, 99, 235, 0.085), transparent 26rem),
+        radial-gradient(circle at 88% 36%, rgba(59, 130, 246, 0.05), transparent 30rem),
+        linear-gradient(180deg, #07090d 0%, var(--bg) 45%, var(--bg-deep) 100%);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .section {
+      position: relative;
+      padding: clamp(84px, 9vw, 132px) 0;
+    }
+
+    .section--soft {
+      border-block: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(13, 18, 27, 0.58), rgba(7, 10, 15, 0.84));
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 999;
+      top: 10px;
+      left: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: #fff;
+      color: #000;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      top: clamp(12px, 1.8vw, 20px);
+      right: clamp(14px, 2.4vw, 28px);
+      display: flex;
+      max-width: calc(100vw - 28px);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid rgba(96, 165, 250, 0.36);
+      border-radius: 999px;
+      background: linear-gradient(135deg, #245fd1, var(--blue));
+      box-shadow:
+        0 12px 34px rgba(37, 99, 235, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition:
+        transform 0.25s var(--ease-premium),
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      border-color: rgba(147, 197, 253, 0.56);
+      box-shadow:
+        0 16px 42px rgba(37, 99, 235, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button:focus-visible,
+    .service-card:focus-visible,
+    .project a:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #79aefc;
+      outline-offset: 4px;
+    }
+
+    .button--small {
+      min-height: 44px;
+      padding-inline: 18px;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(8, 12, 18, 0.78);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      font-size: 0.86rem;
+    }
+
+    .button--small:hover {
+      border-color: var(--blue-line);
+      background: rgba(13, 24, 43, 0.9);
+      box-shadow: 0 12px 38px rgba(18, 69, 153, 0.16);
+    }
+
+    .button--ghost {
+      border-color: var(--line-strong);
+      background: rgba(9, 13, 20, 0.72);
+      box-shadow: none;
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .button--ghost:hover {
+      border-color: rgba(96, 165, 250, 0.34);
+      background: rgba(14, 22, 34, 0.88);
+      box-shadow: 0 12px 34px rgba(17, 65, 147, 0.1);
+    }
+
+    .hero {
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      padding-top: 110px;
+      isolation: isolate;
+    }
+
+    .hero__content {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero__glow {
+      position: absolute;
+      z-index: -1;
+      top: 3%;
+      left: 50%;
+      width: min(660px, 82vw);
+      height: 400px;
+      background:
+        radial-gradient(ellipse, rgba(37, 99, 235, 0.17), transparent 70%);
+      filter: blur(26px);
+      transform: translateX(-50%);
+      opacity: 0.9;
+    }
+
+    .hero__grid {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      opacity: 0.1;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse, black 8%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse, black 8%, transparent 70%);
+    }
+
+    .brand {
+      margin: 0;
+      background:
+        linear-gradient(105deg, #ffffff 18%, #edf4ff 47%, #8ebcff 73%, #ffffff 100%);
+      background-size: 160% auto;
+      color: transparent;
+      font-size: clamp(3.45rem, 9.2vw, 7.4rem);
+      font-weight: 820;
+      line-height: 0.9;
+      letter-spacing: -0.045em;
+      text-shadow: 0 0 38px rgba(59, 130, 246, 0.12);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .brand span {
+      letter-spacing: -0.025em;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #79aefc;
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow {
+      margin-top: 30px;
+    }
+
+    .hero h1,
+    .section-heading h2,
+    .about h2,
+    .final-cta h2 {
+      margin: 0;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin-inline: auto;
+      font-size: clamp(2.05rem, 4.65vw, 4.45rem);
+      font-weight: 760;
+    }
+
+    .hero__text {
+      max-width: 650px;
+      margin: 26px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.35vw, 1.13rem);
+      line-height: 1.75;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero__note {
+      margin-top: 28px;
+      color: #7f8a9d;
+      font-size: 0.8rem;
+    }
+
+    .hero__note span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #6fa7fa;
+      box-shadow: 0 0 11px rgba(96, 165, 250, 0.65);
+    }
+
+    .intro {
+      opacity: 0;
+      animation: intro 0.62s var(--ease-premium) forwards;
+    }
+
+    .intro--1 { animation-delay: 0.04s; }
+    .intro--2 { animation-delay: 0.15s; }
+    .intro--3 { animation-delay: 0.26s; }
+    .intro--4 { animation-delay: 0.37s; }
+    .intro--5 { animation-delay: 0.47s; }
+
+    .intro:not(.brand) {
+      transform: translateY(10px);
+    }
+
+    @keyframes intro {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.95rem, 3.8vw, 3.55rem);
+      font-weight: 740;
+    }
+
+    .section-heading > p:last-child {
+      max-width: 590px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 15px;
+      perspective: 1000px;
+    }
+
+    .service-card {
+      position: relative;
+      display: flex;
+      grid-column: span 4;
+      flex-direction: column;
+      min-height: 326px;
+      padding: 27px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(18, 25, 37, 0.76), rgba(8, 12, 19, 0.66));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 14px 38px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform: translateZ(0);
+      transition:
+        opacity 0.3s ease,
+        filter 0.3s ease,
+        transform 0.34s var(--ease-premium),
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .service-card:nth-child(4),
+    .service-card:nth-child(5),
+    .service-card:nth-child(6),
+    .service-card:nth-child(7) {
+      grid-column: span 3;
+    }
+
+    .service-card::before {
+      position: absolute;
+      top: 0;
+      right: 18%;
+      left: 18%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
+      content: "";
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card::after {
+      position: absolute;
+      top: -105px;
+      right: -82px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.12);
+      content: "";
+      filter: blur(36px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(96, 165, 250, 0.3);
+      background:
+        linear-gradient(145deg, rgba(21, 29, 43, 0.8), rgba(9, 14, 22, 0.72));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 18px 44px rgba(0, 0, 0, 0.18);
+      transform: translateY(-3px);
+    }
+
+    .service-card:hover::before {
+      opacity: 0.55;
+    }
+
+    .service-card.is-active {
+      z-index: 10;
+      opacity: 1 !important;
+      filter: none !important;
+      -webkit-filter: none !important;
+      border-color: rgba(96, 165, 250, 0.82);
+      background:
+        linear-gradient(145deg, rgba(24, 38, 59, 0.96), rgba(10, 17, 28, 0.94));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.085),
+        0 30px 82px rgba(17, 67, 156, 0.24),
+        0 0 0 1px rgba(59, 130, 246, 0.1);
+      transform: translateY(-8px) translateZ(26px) scale(1.05);
+    }
+
+    .service-card.is-active::before,
+    .service-card.is-active::after {
+      opacity: 1;
+    }
+
+    .services:has(.service-card.is-active) .service-card:not(.is-active) {
+      z-index: 1;
+      opacity: 0.62;
+      filter: blur(1.2px) saturate(0.84);
+      transform: scale(0.985);
+    }
+
+    .services:has(.service-card.is-active) .service-card.is-active:hover {
+      opacity: 1;
+      filter: none;
+      transform: translateY(-8px) translateZ(26px) scale(1.05);
+    }
+
+    .service-card__index {
+      color: #61799d;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    .service-card h3 {
+      max-width: 260px;
+      margin: 34px 0 8px;
+      font-size: 0.95rem;
+      font-weight: 760;
+      letter-spacing: 0.035em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .price {
+      margin: 0;
+      color: #f8fbff;
+      font-size: 1.55rem;
+      font-weight: 780;
+      letter-spacing: -0.025em;
+    }
+
+    .service-card__description {
+      margin: 17px 0 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .service-card__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      margin-top: auto;
+      padding: 12px 15px;
+      border: 1px solid rgba(96, 165, 250, 0.26);
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #a9ccff;
+      font-size: 0.88rem;
+      font-weight: 750;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(7px);
+      transition:
+        opacity 0.28s ease,
+        transform 0.28s var(--ease-premium),
+        border-color 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .service-card__cta:hover {
+      border-color: rgba(96, 165, 250, 0.5);
+      background: rgba(37, 99, 235, 0.17);
+      color: #dbeafe;
+    }
+
+    .service-card.is-active .service-card__cta,
+    .service-card:focus-within .service-card__cta {
+      opacity: 1;
+      transform: none;
+    }
+
+    .services-indicator {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .services-indicator button {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.28);
+      cursor: pointer;
+      transition: width 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    }
+
+    .services-indicator button.is-active {
+      width: 18px;
+      background: #3b82f6;
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.28);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+      gap: clamp(40px, 7vw, 100px);
+    }
+
+    .why-grid .section-heading {
+      position: sticky;
+      top: 125px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .benefit {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(10, 14, 21, 0.64);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition:
+        transform 0.28s var(--ease-premium),
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .benefit:hover {
+      border-color: rgba(96, 165, 250, 0.22);
+      background: rgba(13, 20, 30, 0.74);
+      transform: translateY(-2px);
+    }
+
+    .benefit span {
+      color: #6795d8;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .benefit h3 {
+      margin: 26px 0 9px;
+      font-size: 1.04rem;
+      line-height: 1.4;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.89rem;
+      line-height: 1.7;
+    }
+
+    .projects {
+      display: grid;
+      gap: 24px;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 3px);
+      background:
+        linear-gradient(145deg, rgba(14, 20, 30, 0.82), rgba(8, 12, 18, 0.8));
+      box-shadow: 0 18px 58px rgba(0, 0, 0, 0.15);
+      transition:
+        transform 0.32s var(--ease-premium),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .project:hover {
+      border-color: rgba(96, 165, 250, 0.26);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .project:nth-child(even) {
+      grid-template-columns: 1fr 1.45fr;
+    }
+
+    .project:nth-child(even) .project__image {
+      order: 2;
+    }
+
+    .project__image {
+      position: relative;
+      display: block;
+      height: 390px;
+      overflow: hidden;
+      background: #101520;
+    }
+
+
+    .project__placeholder {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(13, 20, 32, 0.96), rgba(8, 12, 19, 0.96));
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .project__image.image-missing .project__placeholder { display: grid; }
+    .project__image.image-missing img { display: none; }
+
+    .project__image::after {
+      position: absolute;
+      inset: 0;
+      background: rgba(3, 7, 14, 0.02);
+      content: "";
+      transition: background 0.35s ease;
+      pointer-events: none;
+    }
+
+    .project__overlay {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(5, 10, 18, 0.7);
+      color: #f5f9ff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      opacity: 0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transform: translate(-50%, calc(-50% + 7px));
+      transition: opacity 0.28s ease, transform 0.28s var(--ease-premium);
+      pointer-events: none;
+    }
+
+    .project__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition:
+        transform 0.55s var(--ease-premium),
+        filter 0.35s ease;
+    }
+
+    .project:hover .project__image img {
+      transform: scale(1.035);
+      filter: brightness(0.88) saturate(1.02) contrast(1.02);
+    }
+
+    .project:hover .project__image::after {
+      background: rgba(3, 7, 14, 0.08);
+    }
+
+    .project:hover .project__overlay,
+    .project__image:focus-visible .project__overlay {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .project__body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: clamp(28px, 4.4vw, 52px);
+    }
+
+    .project__body h3 {
+      margin: 0 0 16px;
+      font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .project__body p:not(.eyebrow) {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project__body > a {
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.42);
+      color: #90bbfb;
+      font-weight: 750;
+      text-decoration: none;
+      transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .project__body > a:hover {
+      border-color: #90bbfb;
+      color: #c7ddff;
+    }
+
+    .process {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin: 54px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .process::before,
+    .process::after {
+      position: absolute;
+      top: 21px;
+      right: 0;
+      left: 0;
+      height: 1px;
+      content: "";
+    }
+
+    .process::before {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .process::after {
+      background: linear-gradient(90deg, #2563eb, #60a5fa);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.24);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.85s var(--ease-premium);
+    }
+
+    .process.is-progress-visible::after {
+      transform: scaleX(1);
+    }
+
+    .process li {
+      position: relative;
+      padding-right: 16px;
+    }
+
+    .process span {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(96, 165, 250, 0.34);
+      border-radius: 50%;
+      background: #101722;
+      box-shadow: 0 0 0 7px rgba(6, 8, 12, 0.82);
+      color: #9ec5ff;
+      font-size: 0.7rem;
+      font-weight: 750;
+    }
+
+    .process p {
+      max-width: 170px;
+      margin-top: 21px;
+      font-weight: 730;
+      line-height: 1.45;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      align-items: center;
+      gap: clamp(45px, 9vw, 125px);
+    }
+
+    .about__mark {
+      position: relative;
+      color: #111b29;
+      font-size: clamp(8.5rem, 22vw, 18rem);
+      font-weight: 820;
+      line-height: 0.8;
+      letter-spacing: -0.1em;
+      text-shadow: 0 0 58px rgba(37, 99, 235, 0.12);
+    }
+
+    .about__mark span {
+      position: absolute;
+      right: 8%;
+      bottom: 1%;
+      color: #397ceb;
+      font-size: 0.2em;
+    }
+
+    .about h2 {
+      font-size: clamp(1.95rem, 3.9vw, 3.55rem);
+      font-weight: 740;
+    }
+
+    .about p:not(.eyebrow) {
+      max-width: 700px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .about__author {
+      padding-top: 23px;
+      border-top: 1px solid var(--line);
+    }
+
+    .about__author strong {
+      color: var(--text);
+      font-weight: 750;
+    }
+
+    .final-cta {
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .final-cta__glow {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      width: min(650px, 90vw);
+      height: 280px;
+      background:
+        radial-gradient(ellipse, rgba(37, 99, 235, 0.17), transparent 72%);
+      filter: blur(25px);
+      transform: translate(-50%, -50%);
+      opacity: 0.86;
+    }
+
+    .final-cta .container {
+      position: relative;
+    }
+
+    .final-cta h2 {
+      max-width: 800px;
+      margin-inline: auto;
+      font-size: clamp(2rem, 4.1vw, 3.75rem);
+      font-weight: 750;
+    }
+
+    .final-cta p:not(.eyebrow) {
+      margin: 23px 0 32px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 52px 0 38px;
+      border-top: 1px solid var(--line);
+      background: rgba(4, 6, 9, 0.88);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 35px;
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .footer p {
+      margin: 4px 0;
+    }
+
+    .footer__brand {
+      color: var(--text);
+      font-size: 1.38rem !important;
+      font-weight: 820;
+      letter-spacing: 0.14em;
+    }
+
+    .footer__links {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .footer__links a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer__links a:hover {
+      color: #9ec5ff;
+    }
+
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s var(--ease-premium);
+    }
+
+    .reveal.reveal-pending {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    :where(.reveal).is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (hover: none) {
+      .service-card:not(.is-active):hover,
+      .benefit:hover,
+      .project:hover,
+      .button:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .services {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .service-card,
+      .service-card:nth-child(n) {
+        grid-column: auto;
+      }
+
+      .services:has(.service-card.is-active) .service-card:not(.is-active) {
+        opacity: 0.74;
+        filter: blur(0.8px) saturate(0.88);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid .section-heading {
+        position: static;
+      }
+
+      .project,
+      .project:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .project:nth-child(even) .project__image {
+        order: 0;
+      }
+
+      .project__image {
+        height: 320px;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .process::before,
+      .process::after {
+        display: none;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about__mark {
+        font-size: 11rem;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .topbar {
+        top: 10px;
+        right: 10px;
+        max-width: calc(100vw - 20px);
+      }
+
+      .button--small {
+        min-height: 42px;
+        padding-inline: 15px;
+        font-size: 0.82rem;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 112px;
+        padding-bottom: 86px;
+      }
+
+      .hero__glow {
+        top: 5%;
+        width: 92vw;
+        height: 330px;
+        opacity: 0.72;
+      }
+
+      .hero__grid {
+        background-size: 54px 54px;
+        opacity: 0.08;
+      }
+
+      .brand {
+        font-size: clamp(3.25rem, 20vw, 5.35rem);
+        font-weight: 800;
+        letter-spacing: -0.035em;
+      }
+
+      .hero .eyebrow {
+        margin-top: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 9.5vw, 3.05rem);
+        line-height: 1.08;
+      }
+
+      .hero__text {
+        margin-top: 21px;
+        font-size: 0.98rem;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        margin-top: 30px;
+      }
+
+      .hero__actions .button {
+        width: 100%;
+      }
+
+      .hero__note {
+        margin-top: 24px;
+      }
+
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .section-heading h2,
+      .about h2,
+      .final-cta h2 {
+        font-size: clamp(1.85rem, 8.7vw, 2.7rem);
+      }
+
+      .services {
+        display: flex;
+        gap: 12px;
+        margin-inline: -2px;
+        padding: 5px 2px 20px;
+        overflow-x: auto;
+        scroll-padding-inline: 2px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        overscroll-behavior-inline: contain;
+        scrollbar-width: none;
+      }
+
+      .services::-webkit-scrollbar {
+        display: none;
+      }
+
+      .service-card,
+      .service-card:nth-child(n) {
+        min-width: min(82vw, 326px);
+        min-height: 320px;
+        padding: 24px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+
+      .service-card.is-active {
+        z-index: 10;
+        opacity: 1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: translateY(-2px) scale(1.025);
+      }
+
+      .services:has(.service-card.is-active) .service-card:not(.is-active) {
+        opacity: 0.7;
+        filter: blur(0.55px) saturate(0.92);
+        transform: scale(0.99);
+      }
+
+      .services:has(.service-card.is-active) .service-card.is-active:hover {
+        transform: translateY(-2px) scale(1.025);
+      }
+
+      .services-indicator {
+        display: flex;
+      }
+
+      .service-card h3 {
+        margin-top: 28px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit {
+        padding: 23px;
+      }
+
+      .project__image {
+        height: 270px;
+      }
+
+      .project__body {
+        padding: 25px;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .process li {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        align-items: center;
+        gap: 16px;
+        padding-right: 0;
+      }
+
+      .process p {
+        max-width: none;
+        margin: 0;
+      }
+
+      .about {
+        gap: 32px;
+      }
+
+      .about__mark {
+        font-size: 8rem;
+      }
+
+      .about p:not(.eyebrow) {
+        font-size: 0.98rem;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+
+      .footer__links {
+        justify-content: space-between;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal,
+      .reveal.reveal-pending {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+  <header class="topbar" aria-label="Contato rápido">
+    <a
+      class="button button--small whatsapp-link"
+      data-message="Olá! Vi o site da Yuukri e gostaria de saber mais sobre os serviços."
+      href="#"
+    >
+      Fale conosco <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="container hero__content">
+        <p class="brand intro intro--1" aria-label="Yuukri">
+          YUU<span>KRI</span>
+        </p>
+
+        <p class="eyebrow intro intro--2">
+          Sites • Sistemas • Design
+        </p>
+
+        <h1 id="hero-title" class="intro intro--3">
+          Sites profissionais para empresas que querem crescer no digital.
+        </h1>
+
+        <p class="hero__text intro intro--4">
+          Desenvolvo sites e sistemas personalizados para apresentar sua
+          empresa com clareza, profissionalismo e uma experiência feita
+          para o seu negócio.
+        </p>
+
+        <div class="hero__actions intro intro--5">
+          <a class="button" href="#projetos">
+            Ver projetos <span aria-hidden="true">↓</span>
+          </a>
+
+          <a
+            class="button button--ghost whatsapp-link"
+            data-message="Olá! Vi o site da Yuukri e gostaria de saber mais sobre os serviços."
+            href="#"
+          >
+            Falar comigo <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="hero__note intro intro--5">
+          <span></span>
+          Projetos sob medida, sem complicação
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section"
+      id="servicos"
+      aria-labelledby="services-title"
+    >
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">O que eu desenvolvo</p>
+
+          <h2 id="services-title">
+            Uma vitrine de soluções para cada momento da sua empresa.
+          </h2>
+
+          <p>
+            Selecione um serviço para conhecer os detalhes e conversar
+            diretamente comigo.
+          </p>
+        </div>
+
+        <div class="services" role="list">
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">01</div>
+            <h3>Landing Page Simples</h3>
+            <p class="price">R$200</p>
+
+            <p class="service-card__description">
+              Uma página única com rolagem, ideal para apresentar uma
+              empresa, serviço ou produto de forma direta.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e tenho interesse em uma Landing Page Simples de R$200. Gostaria de saber mais."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">02</div>
+            <h3>Site Simples</h3>
+            <p class="price">R$400</p>
+
+            <p class="service-card__description">
+              Site para apresentar uma empresa, seus principais serviços,
+              informações e formas de contato.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e tenho interesse em um Site Simples de R$400. Gostaria de saber mais."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">03</div>
+            <h3>Site Institucional Completo</h3>
+            <p class="price">R$800</p>
+
+            <p class="service-card__description">
+              Site mais completo para apresentar a empresa, serviços,
+              informações, localização, contato, fotos, depoimentos e
+              outras seções necessárias.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e tenho interesse em um Site Institucional Completo de R$800. Gostaria de saber mais."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">04</div>
+            <h3>Site + Funcionalidades Simples</h3>
+            <p class="price">R$950</p>
+
+            <p class="service-card__description">
+              Site com funcionalidades adicionais simples de acordo com a
+              necessidade do cliente.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e tenho interesse em um Site + Funcionalidades Simples de R$950. Gostaria de saber mais."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">05</div>
+            <h3>Site + Sistema Pequeno</h3>
+            <p class="price">R$1.300</p>
+
+            <p class="service-card__description">
+              Site integrado a um sistema pequeno, podendo possuir
+              funcionalidades como cadastro, agendamento, gerenciamento
+              ou outras necessidades semelhantes.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e tenho interesse em um Site + Sistema Pequeno de R$1.300. Gostaria de saber mais."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">06</div>
+            <h3>Sistema Mais Complexo</h3>
+            <p class="price">ORÇAMENTO</p>
+
+            <p class="service-card__description">
+              Sistemas maiores ou personalizados serão analisados de acordo
+              com as funcionalidades, dificuldade e necessidades do cliente.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e gostaria de solicitar um orçamento para um sistema mais complexo."
+              href="#"
+            >
+              Solicitar orçamento <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article
+            class="service-card reveal"
+            role="listitem"
+            tabindex="0"
+          >
+            <div class="service-card__index">07</div>
+            <h3>Manutenção</h3>
+            <p class="price">R$55/mês</p>
+
+            <p class="service-card__description">
+              Inclui até 3 pequenas mudanças no site por mês.
+            </p>
+
+            <a
+              class="service-card__cta whatsapp-link"
+              data-message="Olá! Vi o site da Yuukri e gostaria de saber mais sobre o serviço de manutenção de R$55 por mês."
+              href="#"
+            >
+              Tenho interesse <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+        <div class="services-indicator" aria-label="Indicador dos serviços"></div>
+      </div>
+    </section>
+
+    <section
+      class="section section--soft"
+      aria-labelledby="why-title"
+    >
+      <div class="container why-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Presença digital</p>
+
+          <h2 id="why-title">
+            Por que sua empresa precisa de um site?
+          </h2>
+
+          <p>
+            Um espaço próprio organiza o que sua empresa precisa comunicar
+            e permite que as pessoas conheçam melhor o negócio, sem
+            depender de informações espalhadas.
+          </p>
+        </div>
+
+        <div class="benefits">
+          <article class="benefit reveal">
+            <span>01</span>
+            <h3>Apresentação profissional</h3>
+
+            <p>
+              Mostre sua empresa, seus serviços, produtos e trabalhos
+              realizados de forma clara.
+            </p>
+          </article>
+
+          <article class="benefit reveal">
+            <span>02</span>
+            <h3>Informação centralizada</h3>
+
+            <p>
+              Reúna contato, localização e informações que normalmente
+              ficam espalhadas entre Instagram, Google e WhatsApp.
+            </p>
+          </article>
+
+          <article class="benefit reveal">
+            <span>03</span>
+            <h3>Seu espaço na internet</h3>
+
+            <p>
+              Tenha um endereço digital próprio para que novos clientes
+              entendam melhor o que sua empresa oferece.
+            </p>
+          </article>
+
+          <article class="benefit reveal">
+            <span>04</span>
+            <h3>Contato mais fácil</h3>
+
+            <p>
+              Direcione cada visitante para a forma certa de conversar
+              com sua empresa.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section"
+      id="projetos"
+      aria-labelledby="projects-title"
+    >
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Projetos selecionados</p>
+          <h2 id="projects-title">Meu trabalho, na prática.</h2>
+
+          <p>
+            Projetos reais desenvolvidos para objetivos e públicos
+            diferentes.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project reveal">
+            <a
+              class="project__image"
+              href="https://2022victtorsilva-debug.github.io/Talita-Lash-Design/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir projeto Talita Souza Lash Designer em nova aba"
+            >
+              <img
+                src="assets/talita-souza.jpg"
+                alt="Página inicial do site Talita Souza Lash Designer"
+                loading="lazy"
+              >
+              <span class="project__overlay">Ver projeto ↗</span>
+            </a>
+
+            <div class="project__body">
+              <div>
+                <p class="eyebrow">Site profissional</p>
+                <h3>Talita Souza Lash Designer</h3>
+
+                <p>
+                  Site desenvolvido para uma Lash Designer, com
+                  apresentação dos serviços, portfólio e contato.
+                </p>
+              </div>
+
+              <a
+                href="https://2022victtorsilva-debug.github.io/Talita-Lash-Design/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver projeto <span aria-hidden="true">→</span>
+
+                <span class="sr-only">
+                  Talita Souza Lash Designer (abre em nova aba)
+                </span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <a
+              class="project__image"
+              href="https://2022victtorsilva-debug.github.io/Jo-oVicttorgithub.io./"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir projeto Amor em Par em nova aba"
+            >
+              <img
+                src="assets/amor-em-par.jpg"
+                alt="Página inicial do site Amor em Par"
+                loading="lazy"
+              >
+              <span class="project__overlay">Ver projeto ↗</span>
+            </a>
+
+            <div class="project__body">
+              <div>
+                <p class="eyebrow">Site multipágina</p>
+                <h3>Amor em Par</h3>
+
+                <p>
+                  Site multipágina voltado para uma loja de presentes
+                  para casais.
+                </p>
+              </div>
+
+              <a
+                href="https://2022victtorsilva-debug.github.io/Jo-oVicttorgithub.io./"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver projeto <span aria-hidden="true">→</span>
+
+                <span class="sr-only">
+                  Amor em Par (abre em nova aba)
+                </span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section section--soft"
+      aria-labelledby="process-title"
+    >
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Como funciona</p>
+
+          <h2 id="process-title">
+            Do primeiro contato ao site no ar.
+          </h2>
+        </div>
+
+        <ol class="process">
+          <li class="reveal">
+            <span>01</span>
+            <p>Você me conta o que precisa</p>
+          </li>
+
+          <li class="reveal">
+            <span>02</span>
+            <p>Definimos o projeto</p>
+          </li>
+
+          <li class="reveal">
+            <span>03</span>
+            <p>Desenvolvo o site</p>
+          </li>
+
+          <li class="reveal">
+            <span>04</span>
+            <p>Revisamos juntos</p>
+          </li>
+
+          <li class="reveal">
+            <span>05</span>
+            <p>Colocamos o site no ar</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__mark reveal">
+          Y<span>—</span>
+        </div>
+
+        <div class="reveal">
+          <p class="eyebrow">Sobre a Yuukri</p>
+
+          <h2 id="about-title">
+            Tecnologia com propósito e clareza.
+          </h2>
+
+          <p>
+            A Yuukri é uma marca focada na criação de sites e sistemas
+            personalizados para empresas. O objetivo é ajudar negócios
+            a terem uma presença profissional na internet, com projetos
+            desenvolvidos de acordo com suas necessidades.
+          </p>
+
+          <p class="about__author">
+            A Yuukri foi criada por <strong>João Victtor.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section final-cta"
+      aria-labelledby="cta-title"
+    >
+      <div class="final-cta__glow" aria-hidden="true"></div>
+
+      <div class="container reveal">
+        <p class="eyebrow">Vamos criar algo juntos?</p>
+
+        <h2 id="cta-title">
+          Tem uma ideia de site?
+        </h2>
+
+        <p>
+          Me conta o que você precisa e eu te ajudo a escolher a melhor opção.
+        </p>
+
+        <a
+          class="button whatsapp-link"
+          data-message="Olá! Vi o site da Yuukri e gostaria de conversar sobre um projeto para minha empresa."
+          href="#"
+        >
+          Conversar no WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer">
+      <div>
+        <p class="footer__brand">YUUKRI</p>
+        <p>Sites • Sistemas • Design</p>
+        <p>João Victtor</p>
+      </div>
+
+      <div class="footer__links">
+        <a
+          class="whatsapp-link"
+          data-message="Olá! Vi o site da Yuukri e gostaria de saber mais sobre os serviços."
+          href="#"
+        >
+          WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = "5577974004912";
+
+    document.querySelectorAll(".project__image img").forEach((img) => {
+      img.addEventListener("error", () => {
+        img.closest(".project__image")?.classList.add("image-missing");
+      });
+    });
+
+    document.querySelectorAll(".whatsapp-link").forEach((link) => {
+      const message = link.dataset.message || "";
+
+      link.href =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+
+    const cards = [
+      ...document.querySelectorAll(".service-card")
+    ];
+
+    const servicesTrack = document.querySelector(".services");
+    const servicesIndicator = document.querySelector(".services-indicator");
+    const mobileServices = window.matchMedia("(max-width: 620px)");
+
+    const indicatorDots = cards.map((card, index) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Ir para o serviço ${index + 1}`);
+      dot.addEventListener("click", () => selectCard(card, true));
+      servicesIndicator?.appendChild(dot);
+      return dot;
+    });
+
+    function centerCard(card, smooth = true) {
+      if (!mobileServices.matches || !servicesTrack || !card) return;
+
+      const left = card.offsetLeft - (servicesTrack.clientWidth - card.offsetWidth) / 2;
+      servicesTrack.scrollTo({
+        left,
+        behavior: reducedMotion || !smooth ? "auto" : "smooth"
+      });
+    }
+
+    function updateIndicator(index) {
+      indicatorDots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === index);
+        dot.setAttribute("aria-current", i === index ? "true" : "false");
+      });
+    }
+
+    function selectCard(selected, shouldCenter = true) {
+      cards.forEach((card) => {
+        const active = card === selected;
+
+        card.classList.toggle("is-active", active);
+
+        if (active) {
+          card.setAttribute("aria-current", "true");
+        } else {
+          card.removeAttribute("aria-current");
+        }
+      });
+
+      if (selected) {
+        const index = cards.indexOf(selected);
+        updateIndicator(index);
+        if (shouldCenter) requestAnimationFrame(() => centerCard(selected));
+      } else if (mobileServices.matches) {
+        const center = servicesTrack.scrollLeft + servicesTrack.clientWidth / 2;
+        const nearestIndex = cards.reduce((best, card, i) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const bestCard = cards[best];
+          const bestCenter = bestCard.offsetLeft + bestCard.offsetWidth / 2;
+          return Math.abs(cardCenter - center) < Math.abs(bestCenter - center) ? i : best;
+        }, 0);
+        updateIndicator(nearestIndex);
+      }
+    }
+
+    function toggleCard(card) {
+      selectCard(card.classList.contains("is-active") ? null : card);
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (!event.target.closest("a")) {
+          toggleCard(card);
+        }
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          toggleCard(card);
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".service-card")) {
+        selectCard(null);
+      }
+    });
+
+
+    let servicesScrollTimer;
+
+    function syncIndicatorToCenteredCard() {
+      if (!mobileServices.matches || !servicesTrack) return;
+      const center = servicesTrack.scrollLeft + servicesTrack.clientWidth / 2;
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - center);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+      });
+
+      updateIndicator(bestIndex);
+    }
+
+    servicesTrack?.addEventListener("scroll", () => {
+      if (!mobileServices.matches) return;
+      window.clearTimeout(servicesScrollTimer);
+      servicesScrollTimer = window.setTimeout(syncIndicatorToCenteredCard, 80);
+    }, { passive: true });
+
+    updateIndicator(0);
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const compactViewport = window.matchMedia(
+      "(max-width: 900px)"
+    ).matches;
+
+
+    const processTrack = document.querySelector(".process");
+    if (processTrack) {
+      if (reducedMotion || compactViewport || !("IntersectionObserver" in window)) {
+        processTrack.classList.add("is-progress-visible");
+      } else {
+        const processObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              processTrack.classList.add("is-progress-visible");
+              processObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.35 });
+        processObserver.observe(processTrack);
+      }
+    }
+
+    const revealItems =
+      document.querySelectorAll(".reveal");
+
+    if (
+      reducedMotion ||
+      compactViewport ||
+      !("IntersectionObserver" in window)
+    ) {
+      revealItems.forEach((item) => {
+        item.classList.add("is-visible");
+      });
+    } else {
+      revealItems.forEach((item) => {
+        item.classList.add("reveal-pending");
+      });
+
+      const revealItem = (item) => {
+        item.classList.remove("reveal-pending");
+        item.classList.add("is-visible");
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealItem(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin: "0px 0px 80px 0px"
+        }
+      );
+
+      revealItems.forEach((item) => {
+        observer.observe(item);
+      });
+
+      // Fallback leve para mobile: se o IntersectionObserver atrasar,
+      // revela somente os elementos próximos da área visível.
+      const revealNearViewport = () => {
+        const limit = window.innerHeight + 120;
+
+        revealItems.forEach((item) => {
+          if (!item.classList.contains("reveal-pending")) return;
+
+          const rect = item.getBoundingClientRect();
+
+          if (rect.top < limit) {
+            revealItem(item);
+            observer.unobserve(item);
+          }
+        });
+      };
+
+      revealNearViewport();
+      window.addEventListener("scroll", revealNearViewport, { passive: true });
+      window.addEventListener("resize", revealNearViewport, { passive: true });
+    }
+  </script>
+</body>
+</html>
