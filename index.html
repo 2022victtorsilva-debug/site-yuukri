@@ -102,9 +102,9 @@
     }
 
     .section--soft {
-      border-block: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(13, 18, 27, 0.58), rgba(7, 10, 15, 0.84));
+        radial-gradient(circle at 82% 18%, rgba(37, 99, 235, 0.055), transparent 24rem),
+        linear-gradient(180deg, rgba(13, 18, 27, 0.52), rgba(7, 10, 15, 0.82));
     }
 
     .skip-link {
@@ -636,12 +636,14 @@
 
     .projects {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
       gap: 24px;
     }
 
     .project {
       display: grid;
-      grid-template-columns: 1.45fr 1fr;
+      grid-template-rows: auto 1fr;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: calc(var(--radius) + 3px);
@@ -660,18 +662,10 @@
       transform: translateY(-3px);
     }
 
-    .project:nth-child(even) {
-      grid-template-columns: 1fr 1.45fr;
-    }
-
-    .project:nth-child(even) .project__image {
-      order: 2;
-    }
-
-    .project__image {
+     .project__image {
       position: relative;
       display: block;
-      height: 390px;
+      height: 520px;
       overflow: hidden;
       background: #101520;
     }
@@ -751,7 +745,9 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
-      padding: clamp(28px, 4.4vw, 52px);
+      gap: 30px;
+      min-height: 248px;
+      padding: clamp(26px, 3.4vw, 40px);
     }
 
     .project__body h3 {
@@ -992,7 +988,7 @@
 
     .reveal.reveal-pending {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(22px);
     }
 
     :where(.reveal).is-visible {
@@ -1032,17 +1028,12 @@
         position: static;
       }
 
-      .project,
-      .project:nth-child(even) {
+      .projects {
         grid-template-columns: 1fr;
       }
 
-      .project:nth-child(even) .project__image {
-        order: 0;
-      }
-
       .project__image {
-        height: 320px;
+        height: 440px;
       }
 
       .process {
@@ -1082,7 +1073,7 @@
       }
 
       .section {
-        padding: 74px 0;
+        padding: 68px 0;
       }
 
       .hero {
@@ -1207,7 +1198,7 @@
       }
 
       .project__image {
-        height: 270px;
+        height: 380px;
       }
 
       .project__body {
@@ -1646,6 +1637,44 @@
           <article class="project reveal">
             <a
               class="project__image"
+              href="https://2022victtorsilva-debug.github.io/modelo-site-de-loja/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir projeto Vittu Lojas em nova aba"
+            >
+              <img
+                src="assets/vittu-lojas-capa.jpg"
+                alt="Página inicial do site Vittu Lojas"
+                loading="lazy"
+              >
+              <span class="project__overlay">Ver projeto ↗</span>
+            </a>
+
+            <div class="project__body">
+              <div>
+                <p class="eyebrow">Site para loja</p>
+                <h3>Vittu Lojas</h3>
+
+                <p>
+                  Site desenvolvido para apresentar uma loja de moda feminina,
+                  com coleções, novidades, informações e contato.
+                </p>
+              </div>
+
+              <a
+                href="https://2022victtorsilva-debug.github.io/modelo-site-de-loja/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver projeto <span aria-hidden="true">→</span>
+                <span class="sr-only">Vittu Lojas (abre em nova aba)</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <a
+              class="project__image"
               href="https://2022victtorsilva-debug.github.io/Jo-oVicttorgithub.io./"
               target="_blank"
               rel="noopener noreferrer"
@@ -1680,6 +1709,44 @@
                 <span class="sr-only">
                   Amor em Par (abre em nova aba)
                 </span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <a
+              class="project__image"
+              href="https://2022victtorsilva-debug.github.io/Site-cria-o-de-quadrinho/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir projeto Traço & História em nova aba"
+            >
+              <img
+                src="assets/traco-historia-capa.jpg"
+                alt="Página inicial do sistema Traço & História"
+                loading="lazy"
+              >
+              <span class="project__overlay">Ver projeto ↗</span>
+            </a>
+
+            <div class="project__body">
+              <div>
+                <p class="eyebrow">Sistema web</p>
+                <h3>Traço &amp; História</h3>
+
+                <p>
+                  Aplicação web para criação de desenhos e quadrinhos, com editor
+                  interativo, salvamento de projetos e recursos de pesquisa de imagens.
+                </p>
+              </div>
+
+              <a
+                href="https://2022victtorsilva-debug.github.io/Site-cria-o-de-quadrinho/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver projeto <span aria-hidden="true">→</span>
+                <span class="sr-only">Traço &amp; História (abre em nova aba)</span>
               </a>
             </div>
           </article>
@@ -1967,12 +2034,17 @@
       }
     }
 
+    document.querySelectorAll(".benefits, .process").forEach((group) => {
+      group.querySelectorAll(".reveal").forEach((item, index) => {
+        item.dataset.revealDelay = String(index * 65);
+      });
+    });
+
     const revealItems =
       document.querySelectorAll(".reveal");
 
     if (
       reducedMotion ||
-      compactViewport ||
       !("IntersectionObserver" in window)
     ) {
       revealItems.forEach((item) => {
@@ -1984,8 +2056,17 @@
       });
 
       const revealItem = (item) => {
+        const delay = Number(item.dataset.revealDelay || 0);
+        if (delay) item.style.transitionDelay = `${delay}ms`;
+
         item.classList.remove("reveal-pending");
         item.classList.add("is-visible");
+
+        if (delay) {
+          window.setTimeout(() => {
+            item.style.transitionDelay = "";
+          }, delay + 700);
+        }
       };
 
       const observer = new IntersectionObserver(
